@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+  *{
+    font-family: Courgette
+  }
+  
+  a{
+
+    margin: 0px 10px;
+    text-decoration: none;
+  }
+  div{
+    text-align: center;
+  }
+  body{
+    background: linear-gradient(to right,white,rgb(152, 152, 190),);
+  }
+</style>
+<body>
+<div [class]="adminLogin?'show':'hide'">
+  <h2 style="margin-top:5% ;color:red;text-align: center;" name="message">{{loginMessage}}</h2>
+  <h1 align="center" style="color:purple;">User login</h1>
+    <table border="0" class="table table-stripped" align="center">
+      <tr><td>UserEmail</td><td><input name="uemail" class="form-control" type="text" [(ngModel)]="email" placeholder="Enter user Email" required></td></tr>
+      <tr><td>Password</td><td><input name="upass" class="form-control" type="password" [(ngModel)]="password" placeholder="Enter Password" required></td></tr>
+      <tr><td colspan="2" align="center"><button name=login class="btn btn-success" type="button" (click)="checkLogin()">Login</button></td></tr>
+    </table>
+    <div align="center">new User ? Create an account <button class="btn btn-dark" name="registerpage" (click)="registerEnable()" >Register</button></div>
+    
+</div>
+
+
+<div [class]="adminRegistration?'show':'hide'">
+  <h2 style="margin-top:5% ;color:red;text-align: center;" name="message">{{registrationMessage}}</h2>
+  <h1 align="center" style="color:purple;">User Registration</h1>
+      <table border="0" class="table table-stripped" align="center">
+        <tr><td>UserName</td><td><input name="uname" class="form-control" type="text" [(ngModel)]="adminref.name" placeholder="Enter user name" required></td></tr>
+        <tr><td>UserEmail</td><td><input name="uemail" class="form-control" type="text" [(ngModel)]="adminref.email" placeholder="Enter user email" required></td></tr>
+        <tr><td align="center" colspan="2" style="color:red">{{errorEmail}}</td></tr>
+        <tr><td>Password</td><td><input name="upass" class="form-control" type="password" [(ngModel)]="adminref.password" placeholder="Enter Password" required></td></tr>
+        <tr><td align="center" colspan="2" style="color:red">{{errorPassword}}</td></tr>
+        <tr><td colspan="2" align="center"><button name=login class="btn btn-success" type="button" (click)="register()">Register</button></td></tr>
+    </table>
+    <div align="center">Already having an account ? <button class="btn btn-dark" name="loginpage" (click)="loginEnable()" >Login</button></div>
+</div>
+
+
+<div [class]="citizenEnable?'show':'hide'">
+  <h2 style="margin-top:5% ;color:red;text-align: center;" name="message">{{hasCitizen}}</h2>
+    <tr><td>Enter your Phone number Linked with aadhar</td><td><input name="number" class="form-control" type="number" [(ngModel)]="phone" placeholder="Enter phone number" required></td>
+    <td align="center"><button name=login class="btn btn-success" type="button" (click)="checkAadhar()">check Aadhar</button></td></tr>
+    <br><h2 style="margin-top:5% ;color:greenyellow;text-align: center;" name="message">{{citizenId}}</h2>
+    <tr><td>Create new Aadhar</td><td align="center"><button name=login class="btn btn-success" type="button" (click)="createAadhar()">Create new Aadhar</button></td></tr>
+</div>
+
+<div [class]="createCitizenEnable?'show':'hide'">
+  <h2 style="margin-top:5% ;color:red;text-align: center;" name="message">{{errorCitizen}}</h2>
+  <h1 align="center" style="color:purple;">Create new aadhar</h1>
+      <table border="0" class="table table-stripped" align="center">
+        <tr><td>Name</td><td><input name="uname" class="form-control" type="text" [(ngModel)]="citizenref.name" placeholder="Enter name" required></td></tr>
+        <tr><td>Email</td><td><input name="uemail" class="form-control" type="text" [(ngModel)]="citizenref.email" placeholder="Enter email" required></td></tr>
+        <tr><td align="center" colspan="2" style="color:red">{{errorCitizenEmail}}</td></tr>
+        <tr><td>Address</td><td><input name="address" class="form-control" type="text" [(ngModel)]="citizenref.address" placeholder="Enter address" required></td></tr>
+        <tr><td>phone number</td><td><input name="phone" class="form-control" type="number" [(ngModel)]="citizenref.phno" placeholder="Enter phone number" required></td></tr>
+        <tr><td align="center" colspan="2" style="color:red">{{errorPhone}}</td></tr>
+        <tr><td>gender</td><td><input type="radio" name="group" value="Male" [(ngModel)]="citizenref.gender">Male
+        <input type="radio" name="group"  value="Female" [(ngModel)]="citizenref.gender">Female</td></tr>
+        <tr><td colspan="2" align="center"><button name=login class="btn btn-success" type="button" (click)="addCitizen()">Register</button></td></tr>
+    </table>
+</div>
+
+
+</body>
+</html>

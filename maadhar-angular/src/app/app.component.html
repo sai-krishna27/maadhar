@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+  *{
+    font-family: Courgette
+  }
+  
+  a{
+
+    margin: 0px 10px;
+    text-decoration: none;
+  }
+  div{
+    text-align: center;
+  }
+  body{
+    background: linear-gradient(to right,white,rgb(152, 152, 190),);
+  }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #00000054;width:100%">
+      
+      <img src="https://cdn.iconscout.com/icon/free/png-256/free-aadhaar-2085055-1747945.png" height="70px" width="70px"><h3 style="color:orangered ; margin-left: 10px;"> Maadhaar</h3>
+      <div class="container-fluid ">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button></div>
+        <div class="navs collapse navbar-collapse navbar-nav me-auto mb-2 mb-lg-0" id="navbarTogglerDemo02" >
+          <a class="nav-links navs" routerLink="/admin">Admin</a>
+          <a class="nav-links navs" routerLink="/user" style="margin-right: 20px;">User</a>
+          
+        </div>
+    </nav>
+    
+</body>
+</html>
+<router-outlet></router-outlet>

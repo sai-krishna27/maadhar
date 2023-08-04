@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+  *{
+    font-family: Courgette
+  }
+  
+  a{
+
+    margin: 0px 10px;
+    text-decoration: none;
+  }
+  div{
+    text-align: center;
+  }
+  body{
+    background: linear-gradient(to right,white,rgb(152, 152, 190),);
+  }
+</style>
+<body>
+<div [class]="adminLogin?'show':'hide'">
+  <h2 style="margin-top:5% ;color:red;text-align: center;" name="message">{{loginMessage}}</h2>
+  <h1 align="center" style="color:purple;">Admin login</h1>
+    <table border="0" class="table table-stripped" align="center">
+      <tr><td>UserEmail</td><td><input name="uemail" class="form-control" type="text" [(ngModel)]="email" placeholder="Enter user Email" required></td></tr>
+      <tr><td>Password</td><td><input name="upass" class="form-control" type="password" [(ngModel)]="password" placeholder="Enter Password" required></td></tr>
+      <tr><td colspan="2" align="center"><button name=login class="btn btn-success" type="button" (click)="checkLogin()">Login</button></td></tr>
+    </table>
+    <div align="center">new User ? Create an account <button class="btn btn-dark" name="registerpage" (click)="registerEnable()" >Register</button></div>
+    
+</div>
+
+<div [class]="adminRegistration?'show':'hide'">
+  <h2 style="margin-top:5% ;color:red;text-align: center;" name="message">{{registrationMessage}}</h2>
+  <h1 align="center" style="color:purple;">Admin Registration</h1>
+      <table border="0" class="table table-stripped" align="center">
+        <tr><td>UserName</td><td><input name="uname" class="form-control" type="text" [(ngModel)]="adminref.name" placeholder="Enter user name" required></td></tr>
+        <tr><td>UserEmail</td><td><input name="uemail" class="form-control" type="text" [(ngModel)]="adminref.email" placeholder="Enter user email" required></td></tr>
+        <tr><td align="center" colspan="2" style="color:red">{{errorEmail}}</td></tr>
+        <tr><td>Password</td><td><input name="upass" class="form-control" type="password" [(ngModel)]="adminref.password" placeholder="Enter Password" required></td></tr>
+        <tr><td align="center" colspan="2" style="color:red">{{errorPassword}}</td></tr>
+        <tr><td colspan="2" align="center"><button name=login class="btn btn-success" type="button" (click)="register()">Register</button></td></tr>
+    </table>
+    <div align="center">Already having an account ? <button class="btn btn-dark" name="loginpage" (click)="loginEnable()" >Login</button></div>
+</div>
+
+<div [class]="menuEnable?'show':'hide'" align="center">
+  
+      <button class="btn btn-dark" style="margin: 50px 50px;" type="button" (click)="citizensList()">View All Citizens</button>
+      <button class="btn btn-danger" style="margin: 50px 50px;" type="button" (click)="approvalList()">Citizens Approval List</button>
+</div>
+
+<div [class]="citizensListEnable?'show':'hide'">
+  <table border="1" class="table table-striped">
+    <tr><th>Aadhar number</th><th>Name</th><th>Gender</th><th>phone number</th><th>Email</th><th>Address</th><th>status</th></tr>
+    <tr *ngFor="let citizen of citizenref">
+    <td>{{citizen.id}}</td>
+    <td>{{citizen.name}}</td>
+    <td>{{citizen.gender}}</td>
+    <td>{{citizen.phno}}</td>
+    <td>{{citizen.email}}</td>
+    <td>{{citizen.address}}</td>
+    <td>{{citizen.status}}</td>
+    </tr>
+    </table>
+</div>
+
+<div [class]="citizensApprovalEnable?'show':'hide'">
+  <table border="1" class="table table-striped">
+    <tr><th>Aadhar number</th><th>Name</th><th>Gender</th><th>phone number</th><th>Email</th><th>Address</th><th>Action</th></tr>
+    <tr *ngFor="let citizen of approvalCitizensList">
+    <td>{{citizen.id}}</td>
+    <td>{{citizen.name}}</td>
+    <td>{{citizen.gender}}</td>
+    <td>{{citizen.phno}}</td>
+    <td>{{citizen.email}}</td>
+    <td>{{citizen.address}}</td>
+    <td><button class="btn btn-danger" (click)="approve(citizen)">Approve</button></td>
+    </tr>
+    </table>
+</div>
+
+</body>
+</html>
